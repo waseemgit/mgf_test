@@ -1,0 +1,40 @@
+<?php
+include 'config.php';
+$controller	=	'';
+$action		=	'';
+
+function __autoload($class_name) 
+{
+    $filename = strtolower($class_name) . '.controller.php';
+    $file = __SITE_PATH . '/Application/Controllers/'. $filename;
+
+    if (file_exists($file) == false)
+    {
+        return false;
+    }
+  include ($file);
+}
+
+
+$route = (empty($_GET['route'])) ? '' : $_GET['route'];
+
+if (empty($route))
+{
+        $controller 	= DEFAULT_CONTROLLER;
+	$action 	= DEFAULT_ACTION;
+}
+else
+{
+        /*** get the parts of the route ***/
+        $parts = explode('/', $route);
+        $controller = $parts[0];
+        if(isset($parts[1]))
+        {
+            $action = $parts[1];
+        }
+}
+
+
+$obj = new $controller();
+$obj->$action();
+?>

@@ -1,0 +1,13 @@
+namespace Application\Controllers;
+class login
+{
+	public function index()
+	{
+		return 'I am in index';
+	}
+	public function test()
+	{
+		return 'I am in test';
+	}
+ 
+}

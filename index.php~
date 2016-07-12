@@ -1,0 +1,46 @@
+﻿<?php
+ error_reporting(E_ALL);
+
+ /*** define the site path constant ***/
+ $site_path = realpath(dirname(__FILE__));
+ define ('__SITE_PATH', $site_path);
+
+ /*** include the init.php file ***/
+ include 'includes/init.php';
+
+
+
+/*ini_set('display_errors', TRUE);
+error_reporting(E_ALL);
+include(__DIR__.'/includes/config.php');
+include(__DIR__.'/includes/autoload.php');
+$db = db::getInstance();
+$n=isset($_REQUEST['n'])?$_REQUEST['n']:'users.php';
+
+#parse url
+#check controller
+#check function
+#Route check {Not a priority}
+#autoload that controller
+#write namespace application/models/ objusers on top of model class
+
+
+if(!isset($_SESSION['id']))
+{
+    header('location:login.php');exit;
+}
+<a href="login.php">Logout</a>
+<table width="100%" height="100%" border="1">
+  <tr>
+    <td height="21" bgcolor="#CCCCCC"><strong>DVO User management</strong> </td>
+  </tr>
+  <tr>
+    <td height="733" align="left" valign="top"><?php include('views/'.$n);?></td>
+  </tr>
+  <tr>
+    <td bgcolor="#CCCCCC"><strong>DVO User management </strong></td>
+  </tr>
+</table>
+*/
+?>
+

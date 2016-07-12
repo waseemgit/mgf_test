@@ -1,0 +1,26 @@
+﻿<?php
+include('includes/config.php');
+
+$action		=	empty($_GET['action'])	? 	''	 :	$_GET['action'];
+session_destroy();
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>Login DVO</title>
+</head>
+<body class="metro">
+
+		<form action="confirm.php" method="post">
+			
+				<input id="username" name="username" type="text" placeholder="Utilizator">
+				<input id="password" name="password" type="password" placeholder="Parolă">
+				<button id="submit" type="submit"><div class="overlay"></div></button>
+				
+			</form>
+
+
+
+</body>	
+</html>
