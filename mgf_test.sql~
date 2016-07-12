@@ -1,3 +1,5 @@
+
+
 --
 -- Database: `mgf_test`
 --
@@ -62,5 +64,3 @@ CREATE TABLE IF NOT EXISTS `internal` (
   `payrollID` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---End of file
