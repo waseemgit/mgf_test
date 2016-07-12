@@ -27,7 +27,6 @@ Assuming we have set virtual host set like following
 
 ```
 
-
 -You can Run test with following url
 http://mgf-test.localhost/
 
