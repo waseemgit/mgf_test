@@ -28,7 +28,8 @@ Assuming we have set virtual host set like following
 ```
 
 
--Run it like this http://mgf-test.localhost/
+-You can Run test with following url
+http://mgf-test.localhost/
 
 
 

@@ -24,6 +24,7 @@ Assuming we have set virtual host set like following
          AllowOverride All
      </Directory>
 </VirtualHost>
+
 ```
 
 
