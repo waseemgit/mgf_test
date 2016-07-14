@@ -9,8 +9,7 @@ use DateTime;
 use Application\InterfaceClasses\users;
 
 /*
- * This Class is used for all operations for users mainly getting API response and converting it to different formats and display them on HTML Page. 
- * This class is highly reusable and in current structure its acting as a controller
+ * Class used for view
  */
 
 class view implements users
