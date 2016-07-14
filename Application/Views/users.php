@@ -9,14 +9,14 @@ $data = $parameters;
         <option value="get_csv">CSV</option>
         <option value="get_json">JSON</option>
     </select>
-    <input type="button" value="CONVERT" onclick="convertFormat('<?=BASE_URL;?>','users')">
+    <input type="button" value="CONVERT" onclick="convertFormat('<?=BASE_URL;?>','<?=DEFAULT_CONTROLLER;?>')">
     <br>
     Salaries
     <select id="method_for_average_salary">
         <option value="get_average_salary_engineers">Engineers</option>
         <option value="get_average_salary_internal">Internal</option>
     </select>
-    <input type="button" value="GET AVERAGE" onclick="getAverageSalary('<?=BASE_URL;?>','users')">
+    <input type="button" value="GET AVERAGE" onclick="getAverageSalary('<?=BASE_URL;?>','<?=DEFAULT_CONTROLLER;?>')">
     <span id="average_salary"></span>
     <br>
     AGE
@@ -25,11 +25,11 @@ $data = $parameters;
         <option value="get_average_age_internals">Internal</option>
         <option value="get_average_age_externals">External</option>
     </select>
-    <input type="button" value="GET AVERAGE" onclick="getAverageAge('<?=BASE_URL;?>','users')">
+    <input type="button" value="GET AVERAGE" onclick="getAverageAge('<?=BASE_URL;?>','<?=DEFAULT_CONTROLLER;?>')">
     <span id="average_age"></span>
     
     
-<span class="cachemsg"><?=$data['datamsg'];?></span> <?php if(!$data['live']){?><a href="<?=BASE_URL?>/users/reset">Reset Cache</a><?php }?>
+<span class="cachemsg"><?=$data['datamsg'];?></span> <?php if(!$data['live']){?><a href="<?=BASE_URL.'/'.DEFAULT_CONTROLLER?>/reset">Reset Cache</a><?php }?>
 <div class="mgf">
     <br><span class="html_users_headings">Engineers</span><br>
     <?=$data['engineersHTMLTable'];?>

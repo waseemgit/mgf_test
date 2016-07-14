@@ -29,7 +29,7 @@ define('HTTP_TYPE', getProtocol());
 define('BASE_URL', HTTP_TYPE . "://" . $_SERVER['HTTP_HOST']);
 
 //Set default Controller and action
-define('DEFAULT_CONTROLLER', 'users');
+define('DEFAULT_CONTROLLER', 'view');
 define('DEFAULT_ACTION', 'index');
 
 $db_prefix = 'dvo_';

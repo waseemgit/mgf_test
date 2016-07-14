@@ -6,51 +6,68 @@ use SimpleXMLElement;
 use DOMDocument;
 use Application\Lib\XMLParser;
 use DateTime;
+use Application\InterfaceClasses\users;
 
 /*
  * This Class is used for all operations for users mainly getting API response and converting it to different formats and display them on HTML Page. 
  * This class is highly reusable and in current structure its acting as a controller
  */
 
-class users
+class view implements users
 {
-    private $params = array();    
+    private $params = array();  
+    private $engineers;
+    private $internal;
+    private $external;
     /*
      * Constructor to gets and set parameters array
      */
     function __construct($params) 
     {
         $this->params   =   $params;
+        $this->engineers = new engineers();
+        $this->internal = new internal();
+        $this->external = new external(); 
     }    
     
     /*
          * This function is used as default function for controller users
          */
     public function index()
-    {   
-        //Get API response   
-        $response_data = $this->getAPIResponse(); 
+    {
+        //If there is no cache already call API and get live data
+        if(filesize(dirname(__FILE__)."/../../cache.txt") == 0)
+        {            
+            $datamsg = 'This data is live';
+            $live = true;
+        }
+        else 
+        {
+            $datamsg = 'This data is cached';  
+            $live = false;
+        }
         
-        //Make array out of API json response
-        $response = json_decode($response_data['data']);
-        $records = $this->toArray($response); 
         
-        //Get Splitted records out of array i.e engineers,internal and external for further sperate use
-        $split = $this->getSplittedUsers($records);
        
         //Prepare Data for default View in grid for file Views/users.php
         $data = array(
-                        'engineersHTMLTable' => $this->makeHTMLTable($response_data['engineers_fields'],$split['engineers']),
-                        'internalHTMLTable' => $this->makeHTMLTable($response_data['internal_fields'],$split['internal']),
-                        'externalHTMLTable' => $this->makeHTMLTable($response_data['external_fields'],$split['external']),
-                        'datamsg' => $response_data['datamsg'],
-                        'live' => $response_data['is_live'],
+                        'engineersHTMLTable' => $this->engineers->get_html_data(),
+                        'internalHTMLTable' => $this->internal->get_html_data(),
+                        'externalHTMLTable' => $this->external->get_html_data(),
+                        'datamsg' => $datamsg,
+                        'live' => $live,
             
                     );
+        
+        $this->showHTML($data);              
+    }
+    
+    public function showHTML($data) 
+    {
         //Passing data to Template class
         $objT = new T($data);  
         //Calling main function of Template which have main Template/Theme we can change later on and include Views/users.php in body of main template
-        $objT->main('users');        
+        $objT->main('users');
     }
     
     /*
